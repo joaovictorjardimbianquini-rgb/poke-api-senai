@@ -1,35 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import PokemonCard from './components/PokemonCard';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [pokemonList, setPokemonList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPokemon = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
+        const results = response.data.results;
+
+        const detailedPokemon = await Promise.all(
+          results.map(async (pokemon) => {
+            const res = await axios.get(pokemon.url);
+            return res.data;
+          })
+        );
+
+        setPokemonList(detailedPokemon);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching Pokemon:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchPokemon();
+  }, []);
+
+  const handleCardClick = (pokemon) => {
+    console.log("Selected Pokemon:", pokemon.name);
+    // Aqui no futuro será implementada a exibição de informações detalhadas
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <main className="container">
+        {loading ? (
+          <div className="loading">Carregando Pokémon...</div>
+        ) : (
+          <div className="pokemon-grid">
+            {pokemonList.map((pokemon) => (
+              <PokemonCard 
+                key={pokemon.id} 
+                pokemon={pokemon} 
+                onClick={() => handleCardClick(pokemon)}
+              />
+            ))}
+          </div>
+        )}
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
