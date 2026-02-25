@@ -38,21 +38,25 @@ function App() {
     console.log("Selected Pokemon:", pokemon.name);
   };
 
-  // 🔎 FILTRO
-  const filteredPokemon = pokemonList.filter((pokemon) =>
-    pokemon.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredPokemon = pokemonList.filter((pokemon) => {
+    const searchLower = search.toLowerCase();
+    return (
+      pokemon.name.toLowerCase().startsWith(searchLower) ||
+      pokemon.id.toString().startsWith(searchLower)
+    );
+  });
 
   return (
     <div className="app">
       <SearchBar
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        onClear={() => setSearch("")}
       />
 
       <main className="container">
         {loading ? (
-          <div className="loading">Carregando Pokémon...</div>
+          <div className="loading">Carregando Pokémons...</div>
         ) : (
           <div className="pokemon-grid">
             {filteredPokemon.map((pokemon) => (
