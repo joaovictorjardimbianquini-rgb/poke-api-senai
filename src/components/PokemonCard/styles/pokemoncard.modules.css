@@ -1,0 +1,43 @@
+.pokemonCard{
+  width: 2rem;
+  height: 3rem;
+}
+
+/* Pokemon Type Colors */
+.grass { background-color: #78C850; }
+.poison { background-color: #A040A0; }
+.fire { background-color: #F08030; }
+.water { background-color: #6890F0; }
+.bug { background-color: #A8B820; }
+.normal { background-color: #A8A878; }
+.electric { background-color: #F8D030; }
+.ground { background-color: #E0C068; }
+.fairy { background-color: #EE99AC; }
+.fighting { background-color: #C03028; }
+.psychic { background-color: #F85888; }
+.rock { background-color: #B8A038; }
+.ghost { background-color: #705898; }
+.ice { background-color: #98D8D8; }
+.dragon { background-color: #7038F8; }
+.steel { background-color: #B8B8D0; }
+.dark { background-color: #705848; }
+.flying { background-color: #A890F0; }
+
+.card-bg-grass { background-color: #a8f0a8; }
+.card-bg-fire { background-color: #fbba8e; }
+.card-bg-water { background-color: #96aff7; }
+.card-bg-bug { background-color: #c9d64f; }
+.card-bg-normal { background-color: #c6c6a7; }
+.card-bg-electric { background-color: #f7e186; }
+.card-bg-ground { background-color: #e6d3a1; }
+.card-bg-fairy { background-color: #f5bcc9; }
+.card-bg-fighting { background-color: #d67873; }
+.card-bg-psychic { background-color: #f99eb8; }
+.card-bg-rock { background-color: #d1c17d; }
+.card-bg-ghost { background-color: #a292bc; }
+.card-bg-ice { background-color: #c2e6e6; }
+.card-bg-dragon { background-color: #a27dfa; }
+.card-bg-dark { background-color: #4a3a30; }
+.card-bg-steel { background-color: #d1d1e0; }
+.card-bg-flying { background-color: #c6b7f5; }
+.card-bg-poison { background-color: #c183c1; }
