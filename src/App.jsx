@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import PokemonCard from './components/PokemonCard';
+import { SearchBar } from "./assets/Components/pesquisa";
 import './App.css';
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -34,17 +36,26 @@ function App() {
 
   const handleCardClick = (pokemon) => {
     console.log("Selected Pokemon:", pokemon.name);
-    // Aqui no futuro será implementada a exibição de informações detalhadas
   };
+
+  // 🔎 FILTRO
+  const filteredPokemon = pokemonList.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className="app">
+      <SearchBar
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+
       <main className="container">
         {loading ? (
           <div className="loading">Carregando Pokémon...</div>
         ) : (
           <div className="pokemon-grid">
-            {pokemonList.map((pokemon) => (
+            {filteredPokemon.map((pokemon) => (
               <PokemonCard 
                 key={pokemon.id} 
                 pokemon={pokemon} 
