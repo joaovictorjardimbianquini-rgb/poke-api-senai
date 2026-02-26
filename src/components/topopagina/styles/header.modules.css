@@ -1,20 +1,20 @@
-header {
+Header {
     width: 100vw;
-    background: linear-gradient(180deg, #e50914 0%, #ff5f5f 100%);    
+    background: linear-gradient(180deg, #e50914 10%, #ff5f5f 100%);    
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 0;
 }
 
-.header-container {
+.header-content {
     font-size: 3rem;
     margin: 0;
     font-weight: bold;
     margin: top 0;
 }
 
-.header-container p {
+.header-subtitle {
     margin-top: 10px;
     font-size: 1.1rem;
     opacity: 0.9;

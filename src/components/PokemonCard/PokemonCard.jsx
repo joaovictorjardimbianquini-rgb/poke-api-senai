@@ -1,5 +1,3 @@
-import React from 'react';
-
 const PokemonCard = ({ pokemon, onClick }) => {
   const mainType = pokemon.types[0].type.name;
   

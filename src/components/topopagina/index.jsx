@@ -1,14 +1,14 @@
 import "./styles/header.modules.css";
 
-function Header () {
-    return (
-        <header className="header">
-            <div className="header-container">
-                <h1>Pokédex</h1>
-                <p>Busque e explore todos</p>
-            </div>
-        </header>
-    );
-}
+export default function Header({ title, subtitle, children }) {
+  return (
+    <header className="header">
+      <div className="header-content">
+        <h1 className="header-title">{title}</h1>
+        <h2 className="header-subtitle">{subtitle}</h2>
 
-export default Header;
+        {children}
+      </div>
+    </header>
+  );
+}
