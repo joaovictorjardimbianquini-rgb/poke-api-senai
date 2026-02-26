@@ -1,14 +1,17 @@
-import Header from './components/topopagina';
-import './App.css'
-import { SearchBar } from './assets/Components/pesquisa';
+import PokemonCard from './components/PokemonCard';
+import { SearchBar } from "./assets/Components/pesquisa";
+import './App.css';
+
+function App() {
+
 
 
 function App() {
   return (
-  <>
-  <Header />
-  <SearchBar />
-  </>
+    <div className="app">
+
+
+    </div>
   );
 }
 
