@@ -1,7 +1,15 @@
+<<<<<<< header
+body {
+  background: linear-gradient(180deg, #ffffff 0%, #ec9999 100%);
+}
+
+#root {
+=======
 .container {
   max-width: 1200px;
+>>>>>>> main
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
 }
 
