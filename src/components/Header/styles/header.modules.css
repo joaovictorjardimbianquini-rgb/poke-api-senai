@@ -2,7 +2,7 @@
     width: 100vw;
     min-height: 500px;
     position: relative;
-    background: url("../../../../public/background.mp4/m2-res_476p.gif") center/cover no-repeat;
+    background: url("/background.mp4/m2-res_476p.gif") center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
