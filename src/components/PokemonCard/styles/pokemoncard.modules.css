@@ -1,9 +1,62 @@
-.pokemonCard{
-  width: 2rem;
-  height: 3rem;
+.pokemonCard {
+  margin-left: -15px;
+  margin-top: 12.9px;
+  margin-bottom: 12.9px;
+  border-radius: 20px;
+  border: 2px solid #d9cae1;
+  width: 220px;
+  padding: 1rem;
+  border-radius: 16px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Pokemon Type Colors */
+.pokemonCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+/*imagem do pokemon*/
+.pokemonCard img {
+  width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/*nome do pokemon no card*/
+.pokemonCard h3 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+/*container das badges*/
+.pokemonBadges {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px; 
+}
+
+/*o ícone dos tipos do pokemon*/
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #000000;
+  background: rgba(255,255,255,0.25);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "Press Start 2P";
+  text-transform: capitalize;
+}
+
+/* tenho quase certeza que não vou mais usar isso, visto que criei uma constante na index pra mexer com as cores, mas vou deixar aqui por desencargo */
+
 .grass { background-color: #78C850; }
 .poison { background-color: #A040A0; }
 .fire { background-color: #F08030; }

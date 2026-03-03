@@ -1,0 +1,19 @@
+.pokemonContainer {
+  border-radius: 1.33%;
+  border: 5px solid #d9cae1;
+  width: 83%;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 220px));
+  justify-content: center;
+  gap: 40px;
+  padding: 10px;
+  background-color: #161225;
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+}
+
+
