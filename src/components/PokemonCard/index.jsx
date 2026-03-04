@@ -26,7 +26,7 @@ const typeColors = {
 
 const PokemonCard = ({ pokemon }) => {
 
-  const types = pokemon.poke_types.map(t => t.type.name);
+  const types = pokemon.types.map(t => t.type.name);
 
   const color1 = typeColors[types[0]];
   const color2 = types[1] ? typeColors[types[1]] : null;
@@ -37,7 +37,7 @@ const PokemonCard = ({ pokemon }) => {
   return (
     <article className="pokemonCard" style={backgroundStyle}>
       
-      <img src= {pokemon.sprites.front_default} /> 
+      <img src= {pokemon.sprites.other?.["official-artwork"]?.front_default || pokemon.sprites.front_default} /> 
       <h3>{pokemon.name}</h3>
 
       <div className="pokemonBadges">
