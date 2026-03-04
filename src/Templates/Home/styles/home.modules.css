@@ -1,5 +1,5 @@
 .pokemonContainer {
-  border-radius: 1.33%;
+  border-radius: 5px;
   border: 5px solid #d9cae1;
   width: 83%;
   height: 100%;
@@ -10,10 +10,11 @@
   justify-content: center;
   gap: 40px;
   padding: 10px;
-  background-color: #161225;
+  background-color: #1c1730;
   background-size: cover;
   background-position: center;
   background-repeat: repeat-y;
+  box-shadow: 0 10px 30px 30px rgba(66, 67, 126, 0.5)
 }
 
 

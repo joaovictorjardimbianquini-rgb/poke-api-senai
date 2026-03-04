@@ -40,14 +40,17 @@ const PokemonCard = ({ pokemon }) => {
       <img src= {pokemon.sprites.front_default} /> 
       <h3>{pokemon.name}</h3>
 
-      <div className="pokemonBadges">
-        
+      <div className="pokemonBadges">   
       {types.map((type, index) => (
         <span key={index} className="badge" style={{ backgroundColor: typeColors[type] }}> 
           {type}
         </span>
       ))}
       </div>
+
+      <button className="button-add-pokemon" onClick={()=> adToTeam(pokemon)}>
+        ADICIONAR AO TIME
+      </button>
 
     </article>
   );

@@ -108,8 +108,9 @@ const fakePokemonOshawott = {
     }
 };
 
+
     return(
-        <>
+        <>   
             <Header title="PokeDex" subtitle="Explore todos os Pokemon" children={<Pesquisa/>}/>
             <div className='pokemonContainerOverlay'>
             <main className="pokemonContainer">
