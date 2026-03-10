@@ -1,11 +1,15 @@
 import "./styles/header.modules.css";
+import { Link } from "react-router-dom";
 
-export default function Header({ subtitle, children, button }) {
+export default function Header({ subtitle, children }) {
   return (
 
     <header className="header">
-      <button className="header-button1">HOME</button>
-      <button className="header-button2">TEAM BUILDER</button>
+
+      <Link to="/" className="header-button1">HOME</Link>
+
+      <Link to="/TeamBuilder" className="header-button2">TEAM BUILDER</Link>
+      
       <img src= "/background.mp4/m2-res_476p.gif" className="header-bg" />
       <div className="header-overlay"></div>
       <div className="header-content">

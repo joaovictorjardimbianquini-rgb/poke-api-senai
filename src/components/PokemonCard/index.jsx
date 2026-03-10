@@ -36,9 +36,10 @@ const PokemonCard = ({ pokemon }) => {
 
   return (
     <article className="pokemonCard" style={backgroundStyle}>
-      
+      <div className="fundoTransparente">
       <img src= {pokemon.sprites.front_default} /> 
       <h3>{pokemon.name}</h3>
+      </div>
 
       <div className="pokemonBadges">   
       {types.map((type, index) => (
