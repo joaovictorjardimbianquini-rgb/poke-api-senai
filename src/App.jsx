@@ -20,7 +20,7 @@ export default function App() {
       </Header>
       <Routes>
         <Route path="/" element={<Home searchQuery={search} />} />
-        {/* TeamBuilder route removed: front link in Header remains for colleague work */}
+        {/* Deixei a rota limpa para depois facilitar a integração */}
       </Routes>
     </BrowserRouter>
   );

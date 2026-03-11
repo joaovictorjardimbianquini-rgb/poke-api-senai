@@ -55,7 +55,7 @@ const PokemonCard = ({ pokemon }) => {
         className="button-add-pokemon"
         onClick={(e) => {
           e.stopPropagation();
-          /* intentionally no-op: visible placeholder button only */
+          /* Criar a funcionalidade depois */
         }}
         type="button"
       >
