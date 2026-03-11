@@ -1,20 +1,26 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import "./App.css";
 import Pesquisa from "./components/Pesquisa";
 
 import Home from "./Templates/Home";
-import TeamBuilder from "./Templates/TeamBuilder";
 import Header from "./components/Header";
 
 export default function App() {
+  const [search, setSearch] = useState("");
+
   return (
     <BrowserRouter>
       <Header subtitle="Explore todos os Pokemon">
-        <Pesquisa />
+        <Pesquisa
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onClear={() => setSearch("")}
+        />
       </Header>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/TeamBuilder" element={<TeamBuilder />} />
+        <Route path="/" element={<Home searchQuery={search} />} />
+        {/* TeamBuilder route removed: front link in Header remains for colleague work */}
       </Routes>
     </BrowserRouter>
   );

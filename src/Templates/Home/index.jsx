@@ -4,7 +4,7 @@ import PokemonCard from '../../components/PokemonCard';
 import PokemonInfo from '../../components/PokemonInfo';
 import './styles/home.modules.css';
 
-function Home() {
+function Home({ searchQuery = "" }) {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
@@ -105,6 +105,16 @@ function Home() {
     };
   }
 
+  const query = (searchQuery || "").toString().trim();
+
+  const filtered = pokemons.filter((p) => {
+    if (!query) return true;
+    const q = query.replace(/^#/, "");
+    const isNumber = /^\d+$/.test(q);
+    if (isNumber) return p.id === Number(q);
+    return p.name.toLowerCase().includes(q.toLowerCase());
+  });
+
   return (
     <>
       <div className="pokemonContainerOverlay">
@@ -112,7 +122,7 @@ function Home() {
           {loading ? (
             <div className="loading">Carregando Pokémon...</div>
           ) : (
-            pokemons.map((pokemon) => (
+            filtered.map((pokemon) => (
               <div key={pokemon.id} onClick={() => fetchPokemonSpeciesData(pokemon)} style={{ cursor: 'pointer' }}>
                 <PokemonCard pokemon={{ ...pokemon, poke_types: pokemon.types }} />
               </div>
