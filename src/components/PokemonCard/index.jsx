@@ -36,18 +36,6 @@ const PokemonCard = ({ pokemon }) => {
 
   const imgSrc = pokemon.sprites?.other?.["official-artwork"]?.front_default || pokemon.sprites?.front_default;
 
-  function adToTeam(p) {
-    // placeholder implementation (restored): will be replaced by TeamBuilder logic later
-    try {
-      if (typeof window !== 'undefined' && typeof window.adToTeam === 'function') {
-        return window.adToTeam(p);
-      }
-    } catch (e) {
-      // ignore
-    }
-    console.log('ADICIONAR AO TIME placeholder:', p.id || p.name);
-  }
-
   return (
     <article className="pokemonCard" style={backgroundStyle}>
       <div className="fundoTransparente">
@@ -63,7 +51,14 @@ const PokemonCard = ({ pokemon }) => {
         ))}
       </div>
 
-      <button className="button-add-pokemon" onClick={() => adToTeam(pokemon)}>
+      <button
+        className="button-add-pokemon"
+        onClick={(e) => {
+          e.stopPropagation();
+          /* intentionally no-op: visible placeholder button only */
+        }}
+        type="button"
+      >
         ADICIONAR AO TIME
       </button>
 
