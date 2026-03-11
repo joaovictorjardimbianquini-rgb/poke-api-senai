@@ -1,8 +1,9 @@
 import React from 'react';
+import './PokemonCard/styles/pokemoncard.modules.css';
 
 const PokemonCard = ({ pokemon, onClick }) => {
   const mainType = pokemon.types[0].type.name;
-  
+
   return (
     <div 
       className={`pokemon-card card-bg-${mainType}`}
@@ -24,6 +25,16 @@ const PokemonCard = ({ pokemon, onClick }) => {
             </span>
           ))}
         </div>
+        <button
+          className="button-add-pokemon"
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            // visible no-op placeholder
+          }}
+        >
+          ADICIONAR AO TIME
+        </button>
       </div>
     </div>
   );
