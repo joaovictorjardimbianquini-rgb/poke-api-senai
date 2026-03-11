@@ -26,30 +26,32 @@ const typeColors = {
 
 const PokemonCard = ({ pokemon }) => {
 
-  const types = pokemon.poke_types.map(t => t.type.name);
+  const typesArr = (pokemon.poke_types ?? pokemon.types) .map(t => t.type ? t.type.name : t);
 
-  const color1 = typeColors[types[0]];
-  const color2 = types[1] ? typeColors[types[1]] : null;
+  const color1 = typeColors[typesArr[0]];
+  const color2 = typesArr[1] ? typeColors[typesArr[1]] : null;
 
-  //pra fazer um gradiente no BG se o pokemon tiver mais de um tipo
-  const backgroundStyle = color2 ? {background: `linear-gradient(135deg, ${color1}, ${color2})`} : {backgroundColor: color1};
+  // pra fazer um gradiente no BG se o pokemon tiver mais de um tipo
+  const backgroundStyle = color2 ? { background: `linear-gradient(135deg, ${color1}, ${color2})` } : { backgroundColor: color1 };
+
+  const imgSrc = pokemon.sprites?.other?.["official-artwork"]?.front_default || pokemon.sprites?.front_default;
 
   return (
     <article className="pokemonCard" style={backgroundStyle}>
       <div className="fundoTransparente">
-      <img src= {pokemon.sprites.front_default} /> 
-      <h3>{pokemon.name}</h3>
+        <img src={imgSrc} alt={pokemon.name} />
+        <h3>{pokemon.name}</h3>
       </div>
 
-      <div className="pokemonBadges">   
-      {types.map((type, index) => (
-        <span key={index} className="badge" style={{ backgroundColor: typeColors[type] }}> 
-          {type}
-        </span>
-      ))}
+      <div className="pokemonBadges">
+        {typesArr.map((type, index) => (
+          <span key={index} className="badge" style={{ backgroundColor: typeColors[type] }}>
+            {type}
+          </span>
+        ))}
       </div>
 
-      <button className="button-add-pokemon" onClick={()=> adToTeam(pokemon)}>
+      <button className="button-add-pokemon" onClick={() => typeof adToTeam === 'function' && adToTeam(pokemon)}>
         ADICIONAR AO TIME
       </button>
 
