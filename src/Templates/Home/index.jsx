@@ -1,179 +1,54 @@
-import Header from '../../components/Header';
-import Pesquisa from '../../components/Pesquisa';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import PokemonCard from '../../components/PokemonCard';
-import  "./styles/home.modules.css"
+import './styles/home.modules.css';
 
 function Home() {
+  const [pokemonList, setPokemonList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-//fakemon charizard pra usar de teste
-    const fakePokemon = {
-    id: 6,
-    name: "charizard",
-    poke_types: [
-        { type: { name: "fire" } },
-        { type: { name: "flying" } }
-    ],
-    sprites: {
-        front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
-        other: {
-            official_artwork: {
-                front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
-            }
-        }
-    }
-};
+  useEffect(() => {
+    const fetchPokemon = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40');
+        const results = response.data.results;
 
-//Criei vários fakemon (criei o primeiro na IA e fui mudando)
-const fakePokemonVenusaur = {
-    id: 3,
-    name: "venusaur",
-    poke_types: [
-        { type: { name: "grass" } },
-        { type: { name: "poison" } }
-    ],
-    sprites: {
-        front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
-        other: {
-            official_artwork: {
-                front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
-            }
-        }
-    }
-};
+        const detailedPokemon = await Promise.all(
+          results.map(async (pokemon) => {
+            const res = await axios.get(pokemon.url);
+            return res.data;
+          })
+        );
 
-const fakePokemonButterfree = {
-    id: 12,
-    name: "butterfree",
-    poke_types: [
-        { type: { name: "bug" } },
-        { type: { name: "flying" } }
-    ],
-    sprites: {
-        front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png",
-        other: {
-            official_artwork: {
-                front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png"
-            }
-        }
-    }
-};
+        // map to shape expected by existing PokemonCard component
+        const mapped = detailedPokemon.map((p) => ({ ...p, poke_types: p.types }));
+        setPokemonList(mapped);
+      } catch (error) {
+        console.error('Error fetching Pokemon:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-const fakePokemonNidoking = {
-    id: 34,
-    name: "nidoking",
-    poke_types: [
-        { type: { name: "poison" } },
-        { type: { name: "ground" } }
-    ],
-    sprites: {
-        front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/34.png",
-        other: {
-            official_artwork: {
-                front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/34.png"
-            }
-        }
-    }
-};
+    fetchPokemon();
+  }, []);
 
-const fakePokemonGengar = {
-    id: 94,
-    name: "gengar",
-    poke_types: [
-        { type: { name: "ghost" } },
-        { type: { name: "poison" } }
-    ],
-    sprites: {
-        front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png",
-        other: {
-            official_artwork: {
-                front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
-            }
-        }
-    }
-};
+  return (
+    <>
+      <div className="pokemonContainerOverlay">
+        <main className="pokemonContainer">
+          {loading ? (
+            <div className="loading">Carregando Pokémon...</div>
+          ) : (
+            pokemonList.map((p) => <PokemonCard key={p.id} pokemon={p} />)
+          )}
+        </main>
+      </div>
 
-const fakePokemonOshawott = {
-    id: 501,
-    name: "oshawott",
-    poke_types: [
-        { type: { name: "water" } }
-    ],
-    sprites: {
-        front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/501.png",
-        other: {
-            official_artwork: {
-                front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/501.png"
-            }
-        }
-    }
-};
-
-
-    return(
-        <>   
-            <div className='pokemonContainerOverlay'>
-            <main className="pokemonContainer">
-                <PokemonCard pokemon={fakePokemon} />
-                <PokemonCard pokemon={fakePokemonVenusaur} />
-                <PokemonCard pokemon={fakePokemonButterfree} />
-                <PokemonCard pokemon={fakePokemonNidoking} />
-                <PokemonCard pokemon={fakePokemonGengar} />
-                <PokemonCard pokemon={fakePokemonOshawott} />
-                <PokemonCard pokemon={fakePokemon} />
-                <PokemonCard pokemon={fakePokemonVenusaur} />
-                <PokemonCard pokemon={fakePokemonButterfree} />
-                <PokemonCard pokemon={fakePokemonNidoking} />
-                <PokemonCard pokemon={fakePokemonGengar} />
-                <PokemonCard pokemon={fakePokemonOshawott} />
-                <PokemonCard pokemon={fakePokemon} />
-                <PokemonCard pokemon={fakePokemonVenusaur} />
-                <PokemonCard pokemon={fakePokemonButterfree} />
-                <PokemonCard pokemon={fakePokemonNidoking} />
-                <PokemonCard pokemon={fakePokemonGengar} />
-                <PokemonCard pokemon={fakePokemonOshawott} />
-                <PokemonCard pokemon={fakePokemon} />
-                <PokemonCard pokemon={fakePokemonVenusaur} />
-                <PokemonCard pokemon={fakePokemonButterfree} />
-                <PokemonCard pokemon={fakePokemonNidoking} />
-                <PokemonCard pokemon={fakePokemonGengar} />
-                <PokemonCard pokemon={fakePokemonOshawott} />
-                <PokemonCard pokemon={fakePokemon} />
-                <PokemonCard pokemon={fakePokemonVenusaur} />
-                <PokemonCard pokemon={fakePokemonButterfree} />
-                <PokemonCard pokemon={fakePokemonNidoking} />
-                <PokemonCard pokemon={fakePokemonGengar} />
-                <PokemonCard pokemon={fakePokemonOshawott} />
-                <PokemonCard pokemon={fakePokemon} />
-                <PokemonCard pokemon={fakePokemonVenusaur} />
-                <PokemonCard pokemon={fakePokemonButterfree} />
-                <PokemonCard pokemon={fakePokemonNidoking} />
-                <PokemonCard pokemon={fakePokemonGengar} />
-                <PokemonCard pokemon={fakePokemonOshawott} />
-                <PokemonCard pokemon={fakePokemon} />
-                <PokemonCard pokemon={fakePokemonVenusaur} />
-                <PokemonCard pokemon={fakePokemonButterfree} />
-                <PokemonCard pokemon={fakePokemonNidoking} />
-                <PokemonCard pokemon={fakePokemonGengar} />
-                <PokemonCard pokemon={fakePokemonOshawott} />
-                <PokemonCard pokemon={fakePokemon} />
-                <PokemonCard pokemon={fakePokemonVenusaur} />
-                <PokemonCard pokemon={fakePokemonButterfree} />
-                <PokemonCard pokemon={fakePokemonNidoking} />
-                <PokemonCard pokemon={fakePokemonGengar} />
-                <PokemonCard pokemon={fakePokemonOshawott} />
-                <PokemonCard pokemon={fakePokemon} />
-                <PokemonCard pokemon={fakePokemonVenusaur} />
-                <PokemonCard pokemon={fakePokemonButterfree} />
-                <PokemonCard pokemon={fakePokemonNidoking} />
-                <PokemonCard pokemon={fakePokemonGengar} />
-                <PokemonCard pokemon={fakePokemonOshawott} />
-
-            </main>
-            </div>
-            
-            <footer></footer>
-        </>
-    );
+      <footer />
+    </>
+  );
 }
 
 export default Home;
