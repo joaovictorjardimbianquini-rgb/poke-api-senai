@@ -1,0 +1,129 @@
+.info-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.info-card {
+  background: #fff;
+  border-radius: 20px;
+  max-width: 650px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: #ff4757;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+
+.close-btn:hover { transform: scale(1.1); }
+
+.info-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #f1f2f6;
+  padding-bottom: 1.5rem;
+}
+
+.info-img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.info-title h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  text-transform: capitalize;
+  margin: 0 0 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  .info-card {
+    max-width: 800px;
+    padding: 3.5rem;
+  }
+  
+  .info-img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.info-title small {
+  color: #a4b0be;
+  font-size: 1.2rem;
+}
+
+.types { display: flex; gap: 0.5rem; }
+
+.badge {
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.fire { background: #ff4757; }
+.flying { background: #70a1ff; }
+.grass { background: #2ed573; }
+.poison { background: #a55eea; }
+.water { background: #1e90ff; }
+.bug { background: #ffa502; }
+/* ... outros tipos se necessário ... */
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.info-section h3 {
+  color: #2f3542;
+  border-left: 4px solid #3742fa;
+  padding-left: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.info-section ul { list-style: none; padding: 0; }
+
+.info-section li {
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  color: #57606f;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-section b { color: #2f3542; font-weight: 600; }
+
+@media (max-width: 500px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .info-header { flex-direction: column; text-align: center; }
+}
