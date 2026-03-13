@@ -1,0 +1,124 @@
+.pokemonCard {
+  margin-left: -15px;
+  margin-top: 12.9px;
+  margin-bottom: 12.9px;
+  border-radius: 20px;
+  border: 2px solid #d9cae1;
+  width: 220px;
+  padding: 1rem;
+  border-radius: 16px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pokemonCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+/*imagem do pokemon*/
+.pokemonCard img {
+  width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.fundoTransparente{
+  background-color: rgba(61, 61, 61, 0.25);
+  width: 200px;
+  height: 180px;
+  margin-left: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+/*nome do pokemon no card*/
+.pokemonCard h3 {
+  font-size: clamp(10px, 1.2vw, 14px);
+  color: #000000;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1024px) {
+  .pokemonCard h3 {
+    font-size: 16px;
+    margin-top: 15px;
+  }
+}
+
+/*container das badges*/
+.pokemonBadges {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px; 
+}
+
+/*o ícone dos tipos do pokemon*/
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #000000;
+  background: rgba(255,255,255,0.25);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "Press Start 2P";
+  text-transform: capitalize;
+}
+
+.button-add-pokemon{
+  color: #ffffff;
+  border: transparent;
+  background: rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+
+.button-add-pokemon:hover{
+  background-color: rgba(4, 4, 4, 0.115);
+  box-shadow: 0 1px 3px 3px rgba(0, 0, 0, 0.2); 
+}
+/* tenho quase certeza que não vou mais usar isso, visto que criei uma constante na index pra mexer com as cores, mas vou deixar aqui por desencargo */
+
+.grass { background-color: #78C850; }
+.poison { background-color: #A040A0; }
+.fire { background-color: #F08030; }
+.water { background-color: #6890F0; }
+.bug { background-color: #A8B820; }
+.normal { background-color: #A8A878; }
+.electric { background-color: #F8D030; }
+.ground { background-color: #E0C068; }
+.fairy { background-color: #EE99AC; }
+.fighting { background-color: #C03028; }
+.psychic { background-color: #F85888; }
+.rock { background-color: #B8A038; }
+.ghost { background-color: #705898; }
+.ice { background-color: #98D8D8; }
+.dragon { background-color: #7038F8; }
+.steel { background-color: #B8B8D0; }
+.dark { background-color: #705848; }
+.flying { background-color: #A890F0; }
+
+.card-bg-grass { background-color: #a8f0a8; }
+.card-bg-fire { background-color: #fbba8e; }
+.card-bg-water { background-color: #96aff7; }
+.card-bg-bug { background-color: #c9d64f; }
+.card-bg-normal { background-color: #c6c6a7; }
+.card-bg-electric { background-color: #f7e186; }
+.card-bg-ground { background-color: #e6d3a1; }
+.card-bg-fairy { background-color: #f5bcc9; }
+.card-bg-fighting { background-color: #d67873; }
+.card-bg-psychic { background-color: #f99eb8; }
+.card-bg-rock { background-color: #d1c17d; }
+.card-bg-ghost { background-color: #a292bc; }
+.card-bg-ice { background-color: #c2e6e6; }
+.card-bg-dragon { background-color: #a27dfa; }
+.card-bg-dark { background-color: #4a3a30; }
+.card-bg-steel { background-color: #d1d1e0; }
+.card-bg-flying { background-color: #c6b7f5; }
+.card-bg-poison { background-color: #c183c1; }

@@ -1,18 +1,23 @@
-import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import "./App.css";
+import Pesquisa from "./components/Pesquisa";
 
-import './App.css';
-import Login from './templates/Login';
+import Home from "./Templates/Home";
+import Header from "./components/Header";
+import Cadastro from "./templates/Cadastro";
 
-function App() {
-  const [pokemonList, setPokemonList] = useState([]);
-
-
+export default function App() {
+  const [search, setSearch] = useState("");
 
   return (
-    <>
-      <Login/>
-    </>
+    <BrowserRouter>
+
+      <Routes>
+        <Route path="/" element={<Cadastro/>} />
+        <Route path="/Home" element={<Home search={search} setSearch={setSearch} />} />
+        {/* Deixei a rota limpa para depois facilitar a integração */}
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;

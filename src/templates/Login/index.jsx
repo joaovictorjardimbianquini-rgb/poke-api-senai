@@ -1,21 +1,25 @@
 import { RiLockPasswordLine } from 'react-icons/ri'
 import './styles/styles.modules.css'
 import { FaUserLarge } from 'react-icons/fa6'
+import fotopokemon from './img/img.pokemon.png'
 function Login(){
     return (
         <>
-        <div className="estrelas"></div>
+
+        <div className='img-pokemon' >
+            <img src={fotopokemon} alt="imagen de fundo pokemon" />
+        </div>
         <div className="formulario">
             <h1>Login</h1>
             <form>
                 <div className="caixa-formulario">
                     <input type="text" placeholder="Nome de usuário" required />
-                    <FaUserLarge size={30}/>
+                    <FaUserLarge className='user' size={30}/>
                 </div>
 
                 <div className="caixa-formulario">
                     <input type="password" placeholder="senha" required />
-                    <RiLockPasswordLine size={30}/>
+                    <RiLockPasswordLine className='block' size={30}/>
                 </div>
 
                 <div className="caixa-lembrar-esqueci">

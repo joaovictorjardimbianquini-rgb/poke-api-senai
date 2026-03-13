@@ -1,0 +1,26 @@
+.teamBuilder{
+  align-self: center;
+  margin-left: 450px;
+  width: 1000px;
+  background: rgba(0,0,0,0.7);
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+}
+
+.teamGrid{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
+}
+
+.slot{
+  background: rgba(255,255,255,0.1);
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.slot img{
+  width: 100px;
+}
