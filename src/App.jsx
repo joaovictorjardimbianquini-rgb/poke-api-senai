@@ -5,7 +5,6 @@ import Pesquisa from "./components/Pesquisa";
 
 import Home from "./Templates/Home";
 import Header from "./components/Header";
-import Cadastro from "./templates/Cadastro";
 
 export default function App() {
   const [search, setSearch] = useState("");
