@@ -5,6 +5,10 @@ import PokemonInfo from '../../components/PokemonInfo';
 import './styles/home.modules.css';
 
 function Home({ searchQuery = "" }) {
+import Header from '../../components/Header';
+import Pesquisa from '../../components/Pesquisa';
+
+function Home({ search, searchQuery, setSearch = "" }) {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
@@ -106,6 +110,7 @@ function Home({ searchQuery = "" }) {
   }
 
   const query = (searchQuery || "").toString().trim();
+  const query = (search || "").toString().trim();
 
   const filtered = pokemons.filter((p) => {
     if (!query) return true;
@@ -117,6 +122,14 @@ function Home({ searchQuery = "" }) {
 
   return (
     <>
+      <Header subtitle="Explore todos os Pokemon">
+        <Pesquisa
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onClear={() => setSearch("")}
+        />
+      </Header>
+
       <div className="pokemonContainerOverlay">
         <main className="pokemonContainer">
           {loading ? (
