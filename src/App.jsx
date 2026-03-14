@@ -20,6 +20,10 @@ export default function App() {
       </Header>
       <Routes>
         <Route path="/" element={<Home searchQuery={search} />} />
+
+      <Routes>
+        <Route path="/" element={<Cadastro/>} />
+        <Route path="/Home" element={<Home search={search} setSearch={setSearch} />} />
         {/* Deixei a rota limpa para depois facilitar a integração */}
       </Routes>
     </BrowserRouter>

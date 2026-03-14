@@ -1,6 +1,7 @@
 import "./styles/pesquisa.modules.css"
 
 export default function Pesquisa({ value, onChange, onClear }) {
+export default function Pesquisa({ value, onChange, onClear, }) {
   return (
     <div className="search-container">
       <div className="search-wrapper">
