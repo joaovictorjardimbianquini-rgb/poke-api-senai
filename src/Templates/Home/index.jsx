@@ -3,6 +3,8 @@ import axios from 'axios';
 import PokemonCard from '../../components/PokemonCard';
 import PokemonInfo from '../../components/PokemonInfo';
 import './styles/home.modules.css';
+
+function Home({ searchQuery = "" }) {
 import Header from '../../components/Header';
 import Pesquisa from '../../components/Pesquisa';
 
@@ -107,6 +109,7 @@ function Home({ search, searchQuery, setSearch = "" }) {
     };
   }
 
+  const query = (searchQuery || "").toString().trim();
   const query = (search || "").toString().trim();
 
   const filtered = pokemons.filter((p) => {

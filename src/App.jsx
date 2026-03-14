@@ -12,6 +12,15 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <Header subtitle="Explore todos os Pokemon">
+        <Pesquisa
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onClear={() => setSearch("")}
+        />
+      </Header>
+      <Routes>
+        <Route path="/" element={<Home searchQuery={search} />} />
 
       <Routes>
         <Route path="/" element={<Cadastro/>} />
