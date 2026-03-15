@@ -1,5 +1,5 @@
 .header {
-    width: 100vw;
+    width: 100%;
     min-height: 500px;
     position: relative;
     background: url("/background.mp4/m2-res_476p.gif") center/cover no-repeat;
@@ -8,55 +8,50 @@
     align-items: center;
     text-align: center;
     overflow: hidden;
+    box-sizing: border-box;
+    padding: 5.5rem 1.5rem 2.5rem;
 }
 
-.header-button1 {
-    position:absolute;
+.header-compact {
+    min-height: 320px;
+}
+
+.header-nav {
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 3;
-    border: transparent;
-    height: 60px;
-    margin-top: -400px; 
-    margin-left: -1100px;
-    background: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    width: min(100%, 960px);
+}
+
+.header-link {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
     color: white;
-    font-family:Arial, Helvetica, sans-serif;
-    padding: 10px 20px;
-    font-size: 2rem;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     transition: 0.3s;
     text-decoration: none;
-    align-items: center;
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
 }
 
-.header-button1:hover{
-    background-color: rgba(255, 255, 255, 0.5);
+.header-link:hover,
+.header-link-active {
+    background-color: rgba(255, 255, 255, 0.88);
     color: black;
-    text-decoration: underline;
-}
-
-.header-button2 {
-    position:absolute;
-    z-index: 3;
-    border: transparent;
-    height: 60px;
-    margin-top: -400px;
-    margin-right: 650px;
-    background: transparent;
-    color: white;
-    padding: 10px 40px;
-    font-size: 2rem;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    transition: 0.3s;
     text-decoration: none;
-    align-items: center;
-    display: inline-flex;
-}
-
-.header-button2:hover{
-    background-color: rgba(255, 255, 255, 0.5);
-    color: black;
-    text-decoration: underline;
 }
 
 .header-subtitle{
@@ -84,7 +79,8 @@
     position: relative;
     z-index: 2;
     color: rgb(255, 255, 255);
-  align-content: center;
+    align-content: center;
+    width: min(100%, 720px);
 }
 
 .header-content {
@@ -98,5 +94,35 @@
     font-size: 1.1rem;
     opacity: 0.9;
     align-self: center;
-    margin-top: -80px;
+    margin-top: 0;
+    line-height: 1.7;
+}
+
+.logo {
+    max-width: min(320px, 75vw);
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .header {
+        min-height: 420px;
+        padding-top: 6.5rem;
+    }
+
+    .header-compact {
+        min-height: 280px;
+    }
+
+    .header-link {
+        font-size: 0.8rem;
+        padding: 0.65rem 1rem;
+    }
+
+    .header-content {
+        font-size: 2rem;
+    }
+
+    .header-subtitle {
+        font-size: 0.9rem;
+    }
 }
