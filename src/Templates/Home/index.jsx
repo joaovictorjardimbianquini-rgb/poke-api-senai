@@ -4,35 +4,62 @@ import PokemonCard from '../../components/PokemonCard';
 import PokemonInfo from '../../components/PokemonInfo';
 import './styles/home.modules.css';
 
-function Home({ searchQuery = "" }) {
+function Home({ searchQuery = "", team, setTeam }) {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const addToTeam = (pokemon) => {
+  if (team.length >= 6) {
+    alert("Seu time já tem 6 Pokémon");
+    return;
+  }
 
-  useEffect(() => {
-    const fetchPokemons = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40');
-        const results = response.data.results;
+  const exists = team.find(p => p.id === pokemon.id);
+  if (exists) {
+    alert("Esse Pokémon já está no time (Dupes Clause)");
+    return;
+  }
 
-        const detailedPokemon = await Promise.all(
-          results.map(async (pokemon) => {
-            const res = await axios.get(pokemon.url);
-            return res.data;
-          })
-        );
+  const formatted = {
+    id: pokemon.id,
+    name: pokemon.name,
+    sprite:
+      pokemon.sprites.other?.['official-artwork']?.front_default ||
+      pokemon.sprites.front_default,
+  };
 
-        setPokemons(detailedPokemon);
-      } catch (error) {
-        console.error('Error fetching Pokemon:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  setTeam([...team, formatted]);
+};
 
-    fetchPokemons();
-  }, []);
+useEffect(() => {
+  const fetchPokemons = async () => {
+    try {
+      setLoading(true);
+
+      const response = await axios.get(
+        'https://pokeapi.co/api/v2/pokemon?limit=1025'
+      );
+
+      const results = response.data.results;
+
+      const detailedPokemon = await Promise.all(
+        results.map(async (pokemon) => {
+          const res = await axios.get(pokemon.url);
+          return res.data;
+        })
+      );
+
+      setPokemons(detailedPokemon);
+
+    } catch (error) {
+      console.error('Error fetching Pokemon:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchPokemons();
+}, []);
 
   async function fetchPokemonSpeciesData(pokemon) {
     try {
@@ -124,7 +151,9 @@ function Home({ searchQuery = "" }) {
           ) : (
             filtered.map((pokemon) => (
               <div key={pokemon.id} onClick={() => fetchPokemonSpeciesData(pokemon)} style={{ cursor: 'pointer' }}>
-                <PokemonCard pokemon={{ ...pokemon, poke_types: pokemon.types }} />
+                <PokemonCard pokemon={{ ...pokemon, poke_types: pokemon.types }} 
+                onAddToTeam={addToTeam}
+                />
               </div>
             ))
           )}

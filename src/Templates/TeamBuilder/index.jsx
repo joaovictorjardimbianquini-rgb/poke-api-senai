@@ -1,50 +1,39 @@
-import "./styles/index.modules.css"
+import "./styles/index.modules.css";
 
+function TeamBuilder({ team, setTeam }) {
 
-//Tela estática só pra ter algo na tela do tambuilder. As funções o Igor disse queria passar com todo mundo junto então vou deixar pra ser resolvido em sala
-function TeamBuilder() {
+  const removeFromTeam = (id) => {
+    setTeam(team.filter(p => p.id !== id));
+  };
 
   return (
     <div className="teamBuilder">
-
       <h2>Time 1</h2>
 
       <div className="teamGrid">
+        {[...Array(6)].map((_, index) => {
+          const pokemon = team[index];
 
-        <div className="slot">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"/>
-          <p>Charizard</p>
-        </div>
+          return (
+            <div key={index} className="slot">
+              {pokemon ? (
+                <>
+                  <img src={pokemon.sprite} alt={pokemon.name} />
+                  <p>{pokemon.name}</p>
 
-        <div className="slot">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"/>
-          <p>Pikachu</p>
-        </div>
-
-        <div className="slot">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"/>
-          <p>Blastoise</p>
-        </div>
-
-        <div className="slot">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"/>
-          <p>Venusaur</p>
-        </div>
-
-        <div className="slot">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png"/>
-          <p>Gengar</p>
-        </div>
-
-        <div className="slot">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png"/>
-          <p>Gyarados</p>
-        </div>
-
+                  <button onClick={() => removeFromTeam(pokemon.id)}>
+                    Remover
+                  </button>
+                </>
+              ) : (
+                <p>Vazio</p>
+              )}
+            </div>
+          );
+        })}
       </div>
-
     </div>
   );
-};
+}
 
 export default TeamBuilder;

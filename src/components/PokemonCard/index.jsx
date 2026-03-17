@@ -24,7 +24,7 @@ const typeColors = {
   flying: "#A890F0",
 };
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, onAddToTeam }) => {
 
   const typesArr = (pokemon.poke_types ?? pokemon.types) .map(t => t.type ? t.type.name : t);
 
@@ -54,8 +54,9 @@ const PokemonCard = ({ pokemon }) => {
       <button
         className="button-add-pokemon"
         onClick={(e) => {
+          console.log("CLICOU NO BOTÃO", pokemon.name);
           e.stopPropagation();
-          /* Criar a funcionalidade depois */
+          onAddToTeam(pokemon);
         }}
         type="button"
       >

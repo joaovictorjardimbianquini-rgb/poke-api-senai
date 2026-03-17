@@ -9,7 +9,7 @@ import Login from "./Templates/Login/index.jsx";
 import TeamBuilder from "./Templates/TeamBuilder";
 import Header from "./components/Header";
 
-function AppContent({ search, setSearch }) {
+function AppContent({ search, setSearch, team, setTeam }) {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
@@ -32,10 +32,10 @@ function AppContent({ search, setSearch }) {
         ) : null}
       </Header>
       <Routes>
-        <Route path="/" element={<Home searchQuery={search} />} />
+        <Route path="/" element={<Home searchQuery={search} team={team} setTeam={setTeam} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/teambuilder" element={<TeamBuilder />} />
+        <Route path="/teambuilder" element={<TeamBuilder team={team} setTeam={setTeam}/>} />
       </Routes>
     </>
   );
@@ -43,10 +43,11 @@ function AppContent({ search, setSearch }) {
 
 export default function App() {
   const [search, setSearch] = useState("");
+  const [team, setTeam] = useState([]);
 
   return (
     <BrowserRouter>
-      <AppContent search={search} setSearch={setSearch} />
+      <AppContent search={search} setSearch={setSearch} team={team} setTeam={setTeam}/>
     </BrowserRouter>
   );
 }
