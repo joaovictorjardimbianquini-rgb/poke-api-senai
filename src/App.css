@@ -1,6 +1,8 @@
 body {
+  /* make body transparent so :root gradient is visible */
+  /* background: transparent; */
+  /* min-height: 100vh; */
   background: #0f172a;
-  min-height: 100vh;
 }
 
 .container {

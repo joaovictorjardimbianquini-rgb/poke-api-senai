@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
 import Pesquisa from "./components/Pesquisa";
+import BackToHomeButton from "./components/BackToHomeButton";
 
 import Home from "./Templates/Home";
 import Cadastro from "./Templates/Cadastro";
@@ -31,6 +32,7 @@ function AppContent({ search, setSearch, team, setTeam }) {
           />
         ) : null}
       </Header>
+      <BackToHomeButton />
       <Routes>
         <Route path="/" element={<Home searchQuery={search} team={team} setTeam={setTeam} />} />
         <Route path="/login" element={<Login />} />

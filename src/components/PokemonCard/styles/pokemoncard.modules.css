@@ -98,6 +98,40 @@
   filter: brightness(1.03);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
 }
+/* press animation to feel like a real button */
+.button-add-pokemon:active{
+  transform: translateY(2px) scale(0.995);
+  box-shadow: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+/* visual state when pokemon is already in team */
+.button-add-pokemon.added{
+  background: linear-gradient(135deg, #40c057, #2f9e44) !important;
+  color: #ffffff !important;
+  cursor: default;
+  box-shadow: 0 8px 20px rgba(47, 158, 68, 0.18);
+}
+
+.pokemonCard.added{
+  position: relative;
+  border-color: rgba(72, 187, 120, 0.45);
+  box-shadow: 0 22px 50px rgba(47, 158, 68, 0.08);
+}
+
+/* small check badge in the corner */
+.team-badge{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #2f9e44;
+  color: white;
+  padding: 6px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(47, 158, 68, 0.18);
+}
 /* tenho quase certeza que não vou mais usar isso, visto que criei uma constante na index pra mexer com as cores, mas vou deixar aqui por desencargo */
 
 .grass { background-color: #78C850; }
