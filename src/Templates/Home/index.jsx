@@ -255,7 +255,7 @@ function Home({ searchQuery = "", team, setTeam }) {
 
   const filtered = (() => {
     if (!query) return pokemons;
-    if (remoteResult && !remoteResult.notFound) return [remoteResult];
+    else if (remoteResult && !remoteResult.notFound) return [remoteResult];
     const q = query.replace(/^#/, "");
     const isNumber = /^\d+$/.test(q);
     if (isNumber) return pokemons.filter(p => p.id === Number(q));
@@ -270,7 +270,14 @@ function Home({ searchQuery = "", team, setTeam }) {
             <div className="loading">Carregando Pokémons...</div>
           ) : filtered.length === 0 ? (
             <div className="loading">Nenhum Pokémon encontrado.</div>
-          ) : (
+          ) : searchingRemote ?
+              (
+              <PokemonCard
+                pokemon={remoteResult}
+              />
+              )  
+            :
+            (
             filtered.map((pokemon) => (
               <div key={`${pokemon.id}-${pokemon.name}`} onClick={(e) => { e.preventDefault(); loadFullPokemon(pokemon.id); }} style={{ cursor: 'pointer' }}>
                 <PokemonCard
@@ -280,7 +287,8 @@ function Home({ searchQuery = "", team, setTeam }) {
                 />
               </div>
             ))
-          )}
+          )
+          }
           <div ref={loaderRef} style={{ height: 1 }} />
         </main>
       </div>

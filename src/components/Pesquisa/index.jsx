@@ -17,7 +17,7 @@ export default function Pesquisa({ value, onChange, onClear }) {
             onClick={onClear}
             type="button"
           >
-            ✕
+            x
           </button>
         )}
       </div>
